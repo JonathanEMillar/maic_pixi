@@ -1,0 +1,22 @@
+[project]
+name = "maic_environment"
+version = "0.1.0"
+description = "Add a short description here"
+authors = ["Johnny Millar <jonathan.millar@ed.ac.uk>"]
+channels = ["conda-forge"]
+platforms = ["osx-64"]
+
+[tasks]
+
+[dependencies]
+python = ">=3.12.4,<3.13"
+mock = ">=5.1.0,<5.2"
+coverage = ">=7.6.1,<7.7"
+numpy = ">=2.0.1,<2.1"
+scipy = ">=1.14.0,<1.15"
+scikit-learn = ">=1.5.1,<1.6"
+matplotlib = ">=3.9.1,<3.10"
+oyaml = ">=1.0,<2"
+
+[pypi-dependencies]
+pymaic = ">=0.2, <1"
