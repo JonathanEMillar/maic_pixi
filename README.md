@@ -37,7 +37,7 @@ pixi install
 1. To run MAIC, in maic_pixi/:
 
 ```
-maic -f <inputfilename> -o <outputdir> -v
+pixi run -- maic -f <inputfilename> -o <outputdir> -v
 ```
 
 Each line of the input file describes a list of entities. The first four columns in each line specify features of the list in this line, and the fifth is a space-separated list of entity names, e.g.
