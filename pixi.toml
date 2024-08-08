@@ -4,9 +4,10 @@ version = "0.1.0"
 description = "Add a short description here"
 authors = ["Johnny Millar <jonathan.millar@ed.ac.uk>"]
 channels = ["conda-forge"]
-platforms = ["osx-64"]
+platforms = ["osx-64", "linux-64"]  # Added linux-64 platform
 
 [tasks]
+# You can define specific tasks here if needed
 
 [dependencies]
 python = ">=3.12.4,<3.13"
