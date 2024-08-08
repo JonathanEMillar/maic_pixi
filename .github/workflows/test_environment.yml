@@ -12,31 +12,37 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
         python-version: '3.10'
-    - name: Install pixi
+
+    - name: Install Pixi
       run: |
         curl -fsSL https://pixi.sh/install.sh | bash
-    - name: Add pixi to PATH
-      run: |
         echo "$HOME/.pixi/bin" >> $GITHUB_PATH
-        export PATH="$HOME/.pixi/bin:$PATH"
+
     - name: Install dependencies
       run: |
+        export PATH="$HOME/.pixi/bin:$PATH"
         pixi install
+        pixi add pymaic>=0.2,<1
+
     - name: Run pymaic function
       run: |
-        source ~/.pixi/bin/activate
+        export PATH="$HOME/.pixi/bin:$PATH"
         maic -f tests/test_input.txt -o output -v
+
     - name: Verify output
       run: |
         if [ ! -d "output" ]; then
           echo "Output directory not found!"
           exit 1
         fi
+
     - name: Clean up output directory
       run: |
         rm -rf output
