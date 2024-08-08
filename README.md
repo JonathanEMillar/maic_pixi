@@ -1,6 +1,6 @@
 # MAIC Pixi environment
 
-![Pymaic Test](https://github.com/JonathanEMillar/maic_pixi/workflows/test_environment.yml/badge.svg)
+![MAIC Environment Test](https://github.com/JonathanEMillar/maic_pixi/actions/workflows/test_environment.yml/badge.svg)
 
 This is a [Pixi](https://pixi.sh) environment that allows you to configure you're machine to run MAIC.
 
