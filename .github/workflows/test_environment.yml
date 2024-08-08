@@ -27,8 +27,7 @@ jobs:
         pixi install
     - name: Run pymaic function
       run: |
-        mkdir -p output
-        pixi run maic -f tests/test_input.txt -o output -v
+        maic -f tests/test_input.txt -o output -v
     - name: Verify output
       run: |
         if [ ! -d "output" ]; then
