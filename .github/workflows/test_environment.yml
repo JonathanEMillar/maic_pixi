@@ -18,8 +18,10 @@ jobs:
     - name: Install dependencies
       run: pixi install
 
-    - name: Run maic command
+    - name: Activate Pixi environment and run maic command
       run: |
+        eval "$(pixi shell --print-activation)"
+        which maic
         maic -f tests/test_input.txt -o output
 
     - name: Check output
