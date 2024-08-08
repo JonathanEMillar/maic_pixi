@@ -28,7 +28,7 @@ jobs:
     - name: Run pymaic function
       run: |
         mkdir -p output
-        maic -f tests/test_input.txt -o output -v
+        pixi run maic -f tests/test_input.txt -o output -v
     - name: Verify output
       run: |
         if [ ! -d "output" ]; then
