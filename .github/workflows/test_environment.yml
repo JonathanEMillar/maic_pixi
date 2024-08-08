@@ -23,17 +23,13 @@ jobs:
     - name: Install Pixi
       run: |
         curl -fsSL https://pixi.sh/install.sh | bash
-        echo "$HOME/.pixi/bin" >> $GITHUB_PATH
 
     - name: Install dependencies
       run: |
-        export PATH="$HOME/.pixi/bin:$PATH"
         pixi install
-        pixi add pymaic>=0.2,<1
 
     - name: Run pymaic function
       run: |
-        export PATH="$HOME/.pixi/bin:$PATH"
         maic -f tests/test_input.txt -o output -v
 
     - name: Verify output
