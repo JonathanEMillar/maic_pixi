@@ -1,45 +1,36 @@
-name: Test pymaic Module
+name: Pymaic Test
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
   pull_request:
-    branches:
-      - main
+    branches: [ main ]
 
 jobs:
-  test:
+  test-pymaic:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.10'
-
-    - name: Install Pixi
-      run: |
-        curl -fsSL https://pixi.sh/install.sh | bash
-        echo 'eval "$(pixi completion --shell bash)"' >> ~/.bashrc
+    - name: Set up Pixi
+      uses: prefix-dev/setup-pixi@v0.4.1
 
     - name: Install dependencies
-      run: |
-        pixi install
+      run: pixi install
 
-    - name: Run pymaic function
+    - name: Run maic command
       run: |
-        maic -f tests/test_input.txt -o output -v
+        maic -f tests/test_input.txt -o output
 
-    - name: Verify output
+    - name: Check output
       run: |
-        if [ ! -d "output" ]; then
-          echo "Output directory not found!"
+        if [ -d output ] && [ "$(ls -A output)" ]; then
+          echo "maic command ran successfully"
+          ls -R output
+        else
+          echo "maic command failed to produce output"
           exit 1
         fi
 
-    - name: Clean up output directory
-      run: |
-        rm -rf output
+    - name: Clean up
+      run: rm -rf output
