@@ -1,4 +1,4 @@
-# MAIC Pixi environment
+# MAIC Pixi environment for MacOS
 
 ![MAIC Environment Test](https://github.com/JonathanEMillar/maic_pixi/actions/workflows/test_environment.yml/badge.svg)
 
